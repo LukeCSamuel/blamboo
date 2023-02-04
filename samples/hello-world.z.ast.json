@@ -1,0 +1,30 @@
+{
+  "body": [
+    {
+      "type": "statement",
+      "statement": {
+        "type": "function-call",
+        "func": {
+          "type": "property-access-expression",
+          "obj": {
+            "type": "identifier",
+            "identifier": "console"
+          },
+          "property": {
+            "type": "identifier",
+            "identifier": "log"
+          }
+        },
+        "parameters": {
+          "type": "parameter-list",
+          "parameters": [
+            {
+              "type": "string",
+              "value": "'Hello, World!'"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

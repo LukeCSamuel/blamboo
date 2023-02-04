@@ -1,0 +1,33 @@
+class TypeA {
+  type = 'a';
+}
+
+class TypeB {
+  type = 'b';
+}
+
+class TypeC {
+  type = 'c';
+  name = 'c';
+}
+
+function func1 () {
+  provide TypeB; // registers an instance of Type at this point in the call stack
+  provide TypeC with { name: 'foo' }; // registers an instance at this point, with args
+
+  const a = inject TypeA; // injects an instance of TypeA, since TypeA isn't provided, a new instance is created for only this use
+  const b = inject TypeB; // injects the instance of TypeB created by the provide in this function
+
+  console.log(a.type);
+  console.log(b.type);
+
+  func2();
+}
+
+function func2 () {
+  const c = inject TypeC; // injects an instance of TypeC, the closest 'provide' for TypeC in the stack is from func1, so that's used
+
+  console.log(c.type);
+}
+
+func1();
